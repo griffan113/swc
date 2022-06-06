@@ -1,4 +1,7 @@
 {
+  "module": {
+    "type": "commonjs"
+  },
   "jsc": {
     "baseUrl": "./src",
     "parser": {
