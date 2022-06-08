@@ -1,6 +1,8 @@
 import { Router } from 'express';
 
-const routesList: Router[] = [];
+import usersModuleRoutes from '@modules/users/infra/http/routes/';
+
+const routesList: Router[] = [usersModuleRoutes];
 
 const router = Router();
 
