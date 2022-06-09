@@ -7,7 +7,14 @@ export default function Module({ name, providers, router }: IModule) {
 
     const findSameNameModule = context.data.find(module => module.name === moduleName);
 
-    if (findSameNameModule) throw new Error(`Module with name ${moduleName} has already been registered`);
+    if (findSameNameModule) throw new Error(`Module with name ${moduleName} has already been registered.`);
+
+    if (providers)
+      for (let i = 0; i < providers.length; i++)
+        for (let j = 0; j < providers.length; j++)
+          if (i !== j)
+            if (providers[i].provideAs === providers[j].provideAs)
+              throw new Error(`Provider ${providers[i].provideAs} has already been registered within module ${moduleName}.`);
 
     context.data.forEach(module => {
       const registeredProviders = module.providers?.map(provider => provider.provideAs);
@@ -19,7 +26,7 @@ export default function Module({ name, providers, router }: IModule) {
       registeredProviders.forEach(registeredProvider => {
         passedProviders.forEach(passedProvider => {
           if (registeredProvider === passedProvider) {
-            throw new Error(`The provider ${passedProvider} is already registered in the module ${module.name}`);
+            throw new Error(`The provider ${passedProvider} is already registered in the module ${module.name}.`);
           }
         });
       });
@@ -31,6 +38,6 @@ export default function Module({ name, providers, router }: IModule) {
       router,
     });
 
-    console.log(`Module ${moduleName} has been registered`);
+    console.log(`Module ${moduleName} has been registered.`);
   };
 }

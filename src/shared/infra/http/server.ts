@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 import 'dotenv/config';
 
-import '@modules/users/users.module';
 import '@shared/container/';
 
 import App from './app';

@@ -1,4 +1,7 @@
 import { container } from 'tsyringe';
+
+import '@modules/users/users.module';
+
 import context from './modules/context';
 
 context.data.forEach(module => {
