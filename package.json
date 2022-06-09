@@ -27,7 +27,10 @@
     "@prisma/client": "^3.14.0",
     "celebrate": "^15.0.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "prisma": "^3.14.0"
+    "prisma": "^3.14.0",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.7.0"
   }
 }

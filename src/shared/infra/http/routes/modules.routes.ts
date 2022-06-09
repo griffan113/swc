@@ -1,11 +1,10 @@
 import { Router } from 'express';
 
-import usersModuleRoutes from '@modules/users/infra/http/routes/';
-
-const routesList: Router[] = [usersModuleRoutes];
+import '@modules/users/users.module';
+import context from '@shared/container/modules/context';
 
 const router = Router();
 
-routesList.forEach(route => router.use('/', route));
+context.getRoutes().forEach(route => router.use('/', route));
 
 export default router;
