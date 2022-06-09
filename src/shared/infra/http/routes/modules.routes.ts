@@ -1,6 +1,5 @@
 import { Router } from 'express';
 
-import '@modules/users/users.module';
 import context from '@shared/container/modules/context';
 
 const router = Router();
