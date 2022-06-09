@@ -38,6 +38,6 @@ export default function Module({ name, providers, router }: IModule) {
       router,
     });
 
-    console.log(`Module ${moduleName} has been registered.`);
+    console.log('\x1b[32m', `Module ${moduleName} has been registered.`);
   };
 }

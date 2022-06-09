@@ -1,8 +1,7 @@
 import { container } from 'tsyringe';
 
 import '@modules/users/users.module';
-
-import context from './modules/context';
+import context from '@shared/container/modules/context';
 
 context.data.forEach(module => {
   module.providers?.forEach(provider => {

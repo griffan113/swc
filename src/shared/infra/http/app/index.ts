@@ -11,6 +11,8 @@ class App {
 
     setupRoutes(this.express);
     setupMiddlewares(this.express);
+
+    this.express.disable('x-powered-by');
   }
 }
 
