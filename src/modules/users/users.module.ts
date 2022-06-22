@@ -1,6 +1,7 @@
-import Module from '@shared/container/Module';
 import usersRouter from '@modules/users/infra/http/routes/';
 import UserRepository from '@modules/users/infra/prisma/UserRepository';
+
+import Module from '@shared/decorators/Module';
 
 @Module({
   router: usersRouter,
