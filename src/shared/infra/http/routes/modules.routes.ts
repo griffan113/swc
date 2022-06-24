@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import context from '@shared/container/modules/context';
+import context from '@shared/container/modulesContext';
 
 const router = Router();
 

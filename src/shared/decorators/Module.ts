@@ -1,5 +1,5 @@
 import { IModule } from '@shared/types/IModule';
-import context from '@shared/container/modules/context';
+import context from '@shared/container/modulesContext';
 
 export default function Module({ name, providers, router }: IModule) {
   return function (constructor: Function) {

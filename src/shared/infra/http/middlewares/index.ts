@@ -4,6 +4,7 @@ import { bodyParseMiddleware } from './bodyParser';
 import { celebrateMiddleware } from './celebrate';
 import { corsMiddleware } from './cors';
 import { noCacheMiddleware } from './noCache';
+import { raterLimiterMiddleware } from './rateLimiter';
 import { appErrorMiddleware, celebrateErrorMiddleware, defaultErrorMiddleware } from './errors';
 
 function setupMiddlewares(app: Express): void {
@@ -14,6 +15,7 @@ function setupMiddlewares(app: Express): void {
   app.use(appErrorMiddleware);
   app.use(defaultErrorMiddleware);
   app.use(celebrateErrorMiddleware);
+  app.use(raterLimiterMiddleware);
 }
 
 export default setupMiddlewares;
