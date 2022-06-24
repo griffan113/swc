@@ -1,11 +1,11 @@
 import { IModule } from '@shared/types/IModule';
-import context from '@shared/container/modulesContext';
+import modulesContext from '@shared/container/modulesContext';
 
 export default function Module({ name, providers, router }: IModule) {
   return function (constructor: Function) {
     const moduleName = name || constructor.name;
 
-    const findSameNameModule = context.data.find(module => module.name === moduleName);
+    const findSameNameModule = modulesContext.data.find(module => module.name === moduleName);
 
     if (findSameNameModule) throw new Error(`Module with name ${moduleName} has already been registered.`);
 
@@ -16,7 +16,7 @@ export default function Module({ name, providers, router }: IModule) {
             if (providers[i].provideAs === providers[j].provideAs)
               throw new Error(`Provider ${providers[i].provideAs} has already been registered within module ${moduleName}.`);
 
-    context.data.forEach(module => {
+    modulesContext.data.forEach(module => {
       const registeredProviders = module.providers?.map(provider => provider.provideAs);
 
       const passedProviders = providers?.map(provider => provider.provideAs);
@@ -32,7 +32,7 @@ export default function Module({ name, providers, router }: IModule) {
       });
     });
 
-    context.data.push({
+    modulesContext.data.push({
       name: moduleName,
       providers,
       router,
