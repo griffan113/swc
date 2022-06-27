@@ -1,8 +1,8 @@
-import prisma from '@shared/infra/prisma';
+import { User } from '@prisma/client';
 
+import prisma from '@shared/infra/prisma';
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import IUserRepository from '@modules/users/repositories/IUserRepository';
-import { User } from '@prisma/client';
 
 export default class UserRepository implements IUserRepository {
   public async findById(id: string): Promise<User | null> {

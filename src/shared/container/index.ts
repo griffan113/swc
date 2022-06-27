@@ -1,5 +1,6 @@
 import { container } from 'tsyringe';
 
+import '@shared/container/providers';
 import '@modules/users/users.module';
 import context from '@shared/container/modulesContext';
 
