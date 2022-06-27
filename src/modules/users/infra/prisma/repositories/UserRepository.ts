@@ -23,6 +23,12 @@ export default class UserRepository implements IUserRepository {
     return users;
   }
 
+  public async update({ id, ...data }: User): Promise<User> {
+    const user = prisma.user.update({ where: { id }, data });
+
+    return user;
+  }
+
   public async create(data: ICreateUserDTO): Promise<User> {
     const user = await prisma.user.create({ data });
 

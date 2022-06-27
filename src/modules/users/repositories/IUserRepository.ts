@@ -7,4 +7,5 @@ export default interface IUserRepository {
   findAll(): Promise<User[]>;
   create(data: ICreateUserDTO): Promise<User>;
   delete(id: string): Promise<User>;
+  update(user: User): Promise<User>;
 }
