@@ -1,16 +1,14 @@
-import { Router } from 'express';
-
 import { IModule } from '@shared/types/IModule';
 
 class ModulesContext {
   public data: IModule[] = [];
 
-  public getRoutes(): Router[] {
-    const routes = this.data.map(module => module.router);
+  public getControllers(): Function[] {
+    const controllers = this.data.map(module => module.controllers);
 
-    const filteredRoutes = routes.filter(route => route !== undefined) as Router[];
+    const filteredControllers = controllers.filter(controller => controller !== undefined) as unknown as Function[];
 
-    return filteredRoutes;
+    return filteredControllers;
   }
 }
 
