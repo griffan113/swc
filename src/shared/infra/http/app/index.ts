@@ -1,6 +1,7 @@
 import express, { Express } from 'express';
 
 import setupMiddlewares from '../middlewares';
+import setupErrors from '../middlewares/errors';
 import setupRoutes from '../routes';
 
 class App {
@@ -9,8 +10,9 @@ class App {
   constructor() {
     this.express = express();
 
-    setupRoutes(this.express);
     setupMiddlewares(this.express);
+    setupRoutes(this.express);
+    setupErrors(this.express);
 
     this.express.disable('x-powered-by');
   }

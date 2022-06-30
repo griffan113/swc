@@ -9,7 +9,7 @@ interface IRequest {
 }
 
 @injectable()
-class CreateUserService {
+class DeleteUserService {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
@@ -18,7 +18,7 @@ class CreateUserService {
   public async execute({ user_id }: IRequest): Promise<User> {
     const findUser = await this.userRepository.findById(user_id);
 
-    if (!findUser) throw new AppError('User not found', 404);
+    if (!findUser) throw new AppError('Usuário não encontrado', 404);
 
     const deleteUser = await this.userRepository.delete(findUser.id);
 
@@ -26,4 +26,4 @@ class CreateUserService {
   }
 }
 
-export default CreateUserService;
+export default DeleteUserService;

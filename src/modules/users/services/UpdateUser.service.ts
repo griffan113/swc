@@ -7,14 +7,14 @@ import AppError from '@shared/errors/AppError';
 
 interface IRequest {
   user_id: string;
-  name: string;
-  email: string;
+  name?: string;
+  email?: string;
   old_password?: string;
   password?: string;
 }
 
 @injectable()
-class UpdateProfileService {
+class UpdateUserService {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
@@ -28,12 +28,14 @@ class UpdateProfileService {
 
     if (!user) throw new AppError('User not found', 404);
 
-    const verifyIfEmailIsUsed = await this.userRepository.findByEmail(email);
+    if (email) {
+      const verifyIfEmailIsUsed = await this.userRepository.findByEmail(email);
 
-    if (verifyIfEmailIsUsed && verifyIfEmailIsUsed.id !== user.id) throw new AppError('Email already used');
+      if (verifyIfEmailIsUsed && verifyIfEmailIsUsed.id !== user.id) throw new AppError('Email already used');
+      user.email = email;
+    }
 
-    user.name = name;
-    user.email = email;
+    if (name) user.name = name;
 
     if (password && !old_password) throw new AppError('Old password missing');
 
@@ -49,4 +51,4 @@ class UpdateProfileService {
   }
 }
 
-export default UpdateProfileService;
+export default UpdateUserService;
